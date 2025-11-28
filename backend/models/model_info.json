@@ -1,0 +1,47 @@
+{
+    "model_name": "SVM",
+    "model_type": "LinearSVC",
+    "best_parameters": {
+        "C": 10,
+        "loss": "squared_hinge",
+        "max_iter": 1000,
+        "random_state": 42
+    },
+    "dataset_info": {
+        "total_samples": 31716,
+        "train_samples": 25372,
+        "test_samples": 6344,
+        "features": 113710
+    },
+    "performance_metrics": {
+        "accuracy": 0.9913303909205549,
+        "precision": 0.9880221130221131,
+        "recall": 0.9950510361892979,
+        "f1_score": 0.99152411773771,
+        "support": 3233
+    },
+    "class_distribution": {
+        "train": {
+            "spam": 12930,
+            "ham": 12442
+        },
+        "test": {
+            "spam": 3233,
+            "ham": 3111
+        }
+    },
+    "confusion_matrix": [
+        [
+            3072,
+            39
+        ],
+        [
+            16,
+            3217
+        ]
+    ],
+    "vectorizer_info": {
+        "type": "TfidfVectorizer",
+        "vocabulary_size": 113710
+    }
+}
