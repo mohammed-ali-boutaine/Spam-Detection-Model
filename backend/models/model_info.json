@@ -11,13 +11,13 @@
         "total_samples": 31716,
         "train_samples": 25372,
         "test_samples": 6344,
-        "features": 113710
+        "features": 37
     },
     "performance_metrics": {
-        "accuracy": 0.9913303909205549,
-        "precision": 0.9880221130221131,
-        "recall": 0.9950510361892979,
-        "f1_score": 0.99152411773771,
+        "accuracy": 0.7969735182849937,
+        "precision": 0.7916041979010495,
+        "recall": 0.8165790287658522,
+        "f1_score": 0.8038976857490865,
         "support": 3233
     },
     "class_distribution": {
@@ -32,16 +32,16 @@
     },
     "confusion_matrix": [
         [
-            3072,
-            39
+            2416,
+            695
         ],
         [
-            16,
-            3217
+            593,
+            2640
         ]
     ],
     "vectorizer_info": {
         "type": "TfidfVectorizer",
-        "vocabulary_size": 113710
+        "vocabulary_size": 37
     }
 }
