@@ -1,12 +1,26 @@
 from fastapi import FastAPI , HTTPException
 from pydantic import BaseModel, Field
 from fastapi.middleware.cors import CORSMiddleware
-from model_service import predict, ModelLoadError
+from model_service import predict
+
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
+
+
+# rate limiter
+limiter = Limiter(get_remote_address)
+
 
 app = FastAPI(
     title="Spam Detection API",
     description="API for detecting spam emails using ML",
 )
+
+
+# Add rate limiter to app state
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 
 # Add CORS middleware
@@ -32,6 +46,7 @@ class PredictionResponse(BaseModel):
 
 
 @app.get("/")
+@limiter.limit("50/minute")
 def home():
     return {
         "message": "Spam Detection API is running",
@@ -41,6 +56,7 @@ def home():
 
 
 @app.post("/check-mail")
+@limiter.limit("50/minute")
 def check_mail(request: EmailRequest):
     try:
         # Combine title and message
