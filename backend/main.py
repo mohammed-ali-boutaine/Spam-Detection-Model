@@ -21,7 +21,8 @@ app.add_middleware(
 
 # Request/Response models
 class EmailRequest(BaseModel):
-    text: str = Field(..., min_length=1, description="Email text to classify")
+    title: str = Field("", description="Email title/subject")
+    message: str = Field(..., min_length=1, description="Email message/body")
     
 class PredictionResponse(BaseModel):
     prediction: int
@@ -42,7 +43,10 @@ def home():
 @app.post("/check-mail")
 def check_mail(request: EmailRequest):
     try:
-        prediction = predict(request.text)
+        # Combine title and message
+        combined_text = f"{request.title} {request.message}".strip()
+        
+        prediction = predict(combined_text)
         message = "spam" if prediction == 1 else "ham"
         
         return {
