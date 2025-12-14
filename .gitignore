@@ -2,3 +2,4 @@
 /venv
 /models
 .todo
+backend/models/best_model.pkl
