@@ -3,3 +3,5 @@
 /models
 .todo
 backend/models/best_model.pkl
+*.pkl
+backend/models/
