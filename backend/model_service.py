@@ -1,13 +1,32 @@
 
 import joblib
 
+import nltk
+
+
+# nltk data check
+try:
+    nltk.data.find('tokenizers/punkt')
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    nltk.download('punkt', quiet=True)
+    nltk.download('stopwords', quiet=True)
+
+
+
 # Exception for model loading errors
 class ModelLoadError(Exception):
     pass
 
-model = joblib.load("models/best_model.pkl")
 
-vectorizer = joblib.load("models/vectorizer.pkl")
+try:
+    model = joblib.load("models/best_model.pkl")
+    vectorizer = joblib.load("models/vectorizer.pkl")
+    print("✓ Models loaded successfully")
+except FileNotFoundError:
+    raise ModelLoadError("Model files not found. Please train the model first.")
+except Exception as e:
+    raise ModelLoadError(f"Failed to load models: {str(e)}")
 
 
 

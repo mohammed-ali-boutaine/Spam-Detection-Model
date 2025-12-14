@@ -11,7 +11,15 @@ stemmer = SnowballStemmer("english")
 
 
 def clean_text(text):
-    """Complete text preprocessing pipeline"""
+    """Complete text preprocessing pipeline
+
+    - Lowercase 
+    - Remove punctuation & special characters
+    - tokenize
+    - remove stop words
+    - stemming
+    
+    """
 
     # Convert to string and lowercase
     text = str(text).lower()

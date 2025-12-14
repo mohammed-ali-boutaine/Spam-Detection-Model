@@ -1,8 +1,0 @@
-pandas 
-nltk
-wordcloud
-matplotlib
-scikit-learn
-fastapi
-uvicorn
-slowapi

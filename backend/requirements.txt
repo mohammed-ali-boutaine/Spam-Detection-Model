@@ -1,0 +1,10 @@
+pandas
+nltk
+wordcloud
+matplotlib
+scikit-learn
+fastapi
+uvicorn[standard]
+slowapi
+python-multipart
+joblib
