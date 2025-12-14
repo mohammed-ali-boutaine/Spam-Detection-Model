@@ -1,6 +1,6 @@
 import type { PredictionResult } from '../types';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost/api';
 
 
 export const predictSpam = async (title: string, message: string): Promise<PredictionResult> => {
